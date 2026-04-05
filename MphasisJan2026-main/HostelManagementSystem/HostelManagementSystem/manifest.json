@@ -1,0 +1,28 @@
+{
+  "manifest_version": 3,
+  "name": "Demo",
+  "description": "Testing...",
+  "version": "0.0",
+  "permissions": ["storage", "activeTab", "scripting", "clipboardRead", "clipboardWrite"],
+  "host_permissions": ["https://api.openai.com/*"],
+  "content_scripts": [
+    {
+      "matches": ["<all_urls>"],
+      "js": ["content.js"],
+      "run_at": "document_start",
+      "all_frames": true
+    }
+  ],
+  "action": {
+    "default_popup": "popup.html"
+  },
+  "commands": {
+    "grab-selection": {
+      "suggested_key": { "default": "Ctrl+Shift+S" },
+      "description": "Grab selected text"
+    }
+  },
+  "background": {
+    "service_worker": "background.js"
+  }
+}
